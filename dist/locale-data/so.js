@@ -2,4 +2,3 @@ riotIntl.__addLocaleData({"locale":"so","pluralRuleFunction":function (n,ord){if
 riotIntl.__addLocaleData({"locale":"so-DJ","parentLocale":"so"});
 riotIntl.__addLocaleData({"locale":"so-ET","parentLocale":"so"});
 riotIntl.__addLocaleData({"locale":"so-KE","parentLocale":"so"});
-riotIntl.__addLocaleData({"locale":"so-SO","parentLocale":"so"});
