@@ -95,7 +95,6 @@ export default {
             }, messages);
         } finally {
             if (message === undefined) {
-                console.error('Could not find Intl message: ' + path);
                 throw new ReferenceError('Could not find Intl message: ' + path);
             }
         }
