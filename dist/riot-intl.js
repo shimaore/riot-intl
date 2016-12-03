@@ -2411,8 +2411,16 @@
             if (!defaults) { defaults = {}; }
 
             return (this.formatOptions || []).reduce(function (opts, name) {
+                var alternativeName = null;
+                if (name) {
+                    // parameter options are converted to lowercase somewhere along the way (by riot?), we need to recover the correct names
+                    alternativeName = name.split(/(?=[A-Z])/).join('-').toLowerCase();  // split on uppercase, then join with a separator and lowercase. i.e find minimum-fraction-digits as well as minimumFractionDigits
+                }
+
                 if (obj.hasOwnProperty(name)) {
                     opts[name] = obj[name];
+                } else if (alternativeName && obj.hasOwnProperty(alternativeName)) {
+                    opts[name] = obj[alternativeName];
                 } else if (defaults.hasOwnProperty(name)) {
                     opts[name] = defaults[name];
                 }
