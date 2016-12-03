@@ -2478,7 +2478,11 @@
             }
 
             if (typeof message === 'string') {
-                message = this.getMessageFormat(message, locales, formats);
+                var content = this.getMessageFormat(message, locales, formats);
+                if (typeof content === 'undefined' || content === null) {
+                    throw new ReferenceError('Could not find Intl message: ' + message);
+                }
+                message = content;
             }
 
             return message.format(values);
@@ -2489,7 +2493,7 @@
             var pathParts = path.split('.');
 
             var message;
-            
+
             try {
                 message = pathParts.reduce(function (obj, pathPart) {
                     return obj[pathPart];
